@@ -1,0 +1,31 @@
+GET http://localhost:3000/states/
+
+###
+GET http://localhost:3000/districts/
+
+###
+GET http://localhost:3000/states/8/
+
+### 
+GET http://localhost:3000/districts/341/
+
+###
+GET http://localhost:3000/states/2/stats/
+
+###
+GET http://localhost:3000/districts/145/details
+
+###
+POST http://localhost:3000/districts/
+
+{
+  "districtName": "Bagalkot",
+  "stateId": 3,
+  "cases": 2323,
+  "cured": 2000,
+  "active": 315,
+  "deaths": 8
+}
+
+###
+DELETE http://localhost:3000/districts/764/
