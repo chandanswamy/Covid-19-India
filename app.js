@@ -153,6 +153,27 @@ app.delete("/districts/:districtId/", async (request, response) => {
   response.send("District Removed");
 });
 
+// PUT DISTRICT API
+app.put("/districts/:districtId", async (request, response) => {
+  const { districtId } = request.params;
+  const { districtName, stateId, cases, cured, active, deaths } = request.body;
+  const updateDistrictQuery = `
+    UPDATE
+        district
+    SET 
+        district_name = '${districtName}',
+        state_id = ${stateId},
+        cases = ${cases},
+        cured = ${cured},
+        active = ${active},
+        deaths = ${deaths}
+    WHERE 
+        district_id = ${districtId};`;
+
+  const updatedDistrict = await dataBase.run(updateDistrictQuery);
+  response.send("District Details Updated");
+});
+
 // GET DISTRICTS API
 app.get("/districts/", async (request, response) => {
   const getDistrictsQuery = `
@@ -168,3 +189,5 @@ app.get("/districts/", async (request, response) => {
     )
   );
 });
+
+module.exports = app;
