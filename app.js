@@ -107,7 +107,7 @@ app.get("/states/:stateId/stats/", async (request, response) => {
     WHERE
         state_id = ${stateId};
     `;
-  const stateStats = await dataBase.all(getStateQuery);
+  const stateStats = await dataBase.get(getStateQuery);
   response.send(stateStats);
 });
 
